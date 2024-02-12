@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 
 import 'debug_controller.dart';
 import 'files/root_paths.dart';
-import 'widgets/color_scheme_widget.dart';
 import 'scanner/scanner_widget.dart';
 import 'widgets/health_widget.dart';
 import 'widgets/network_stats.dart';
 import 'widgets/random_json_files.dart';
-import 'widgets/text_theme_widget.dart';
-import 'widgets/theme_data_widget.dart';
+import 'theme/color_scheme_widget.dart';
+import 'theme/text_theme_widget.dart';
+import 'theme/theme_data_widget.dart';
 
 class DebugView extends StatelessWidget {
   @override
