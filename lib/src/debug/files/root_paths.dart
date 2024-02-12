@@ -16,7 +16,7 @@ class RootPaths extends StatelessWidget {
     return Material(
       elevation: 2,
       borderRadius: BorderRadius.all(Radius.circular(20)),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {
           Get.toNamed(Routes.FILES);
         },
@@ -27,9 +27,10 @@ class RootPaths extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'files',
+                'FILES',
                 style: textTheme.headlineMedium!
-                    .copyWith(color: colorScheme.onPrimary),
+                    .copyWith(color: colorScheme.onPrimary,
+fontWeight: FontWeight.w300,),
               ), // Text
             ],
           ), // Column
