@@ -9,9 +9,9 @@ class DebugController extends GetxService {
 
   final controllers = RxMap<String, int>();
 
-  var requests = 0.obs;
+ final requests = 0.obs;
 
-  var received = 0.obs;
+  final received = 0.obs;
 
   double get rpm =>
       60 *
@@ -33,7 +33,10 @@ class DebugController extends GetxService {
   }
 
   void newReq() {
-    requests += 1;
+    requests.value =requests.value+ 1;
+    if (started.value == null) {
+      started.value=DateTime.now();
+    }
   }
 
   void newRes(Map res) {
@@ -42,13 +45,12 @@ class DebugController extends GetxService {
   }
 
   void newBytes(int bytes) {
-    received.value += bytes;
+    received.value = received.value+bytes;
   }
 
   @override
   void onInit() {
     newInit(this.runtimeType.toString());
-    started.value = DateTime.now();
     loadSamples().then((items) => samples.assignAll(items));
     super.onInit();
   }
