@@ -28,9 +28,10 @@ class RootPaths extends StatelessWidget {
             children: <Widget>[
               Text(
                 'FILES',
-                style: textTheme.headlineMedium!
-                    .copyWith(color: colorScheme.onPrimary,
-fontWeight: FontWeight.w300,),
+                style: textTheme.headlineMedium!.copyWith(
+                  color: colorScheme.onPrimary,
+                  fontWeight: FontWeight.w300,
+                ),
               ), // Text
             ],
           ), // Column
