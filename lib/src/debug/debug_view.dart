@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'debug_controller.dart';
 import 'files/root_paths.dart';
 import 'widgets/color_scheme_widget.dart';
-import 'widgets/scanner_widget.dart';
+import 'scanner/scanner_widget.dart';
 import 'widgets/health_widget.dart';
 import 'widgets/network_stats.dart';
 import 'widgets/random_json_files.dart';
