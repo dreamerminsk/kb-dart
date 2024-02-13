@@ -9,6 +9,8 @@ class DebugController extends GetxService {
 
   final controllers = RxMap<String, int>();
 
+final instances = RxMap<String, DateTime>();
+
  final requests = 0.obs;
 
   final received = 0.obs;
