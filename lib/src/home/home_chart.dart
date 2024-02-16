@@ -77,23 +77,21 @@ class HomeChart extends StatelessWidget {
                       fontSize.value = fontSize.value - 1;
                     }
                   },
-                  child: Container(
-                    width: Get.width * 0.90,
-                    //height: Get.height * 0.96,
-                    padding: EdgeInsets.all(4.0),
-                    child: Obx(
-                      () => ObxValue(
-                          (data) => Text(
+                  child: Obx(
+                     () => ObxValue(
+                          (data) => Padding(
+                           padding: EdgeInsets.all(4.0),
+                           child: Text(
                                 '${c.summary.value?.extract} ~ ${textTheme.bodyLarge}',
                                 textAlign: TextAlign.justify,
                                 overflow: TextOverflow.fade,
                                 style: textTheme.bodyLarge!,
-                              ),
+                              ), // Text
+), // Padding
                           fontSize),
-                    ),
-                  ), // Padding
-                ), // Expanded
-              ), // GestureDetector
+                  ), // Obx
+                ), // GestureDetector
+              ), // Expanded
             ],
           ), // Column
         ), // Container
