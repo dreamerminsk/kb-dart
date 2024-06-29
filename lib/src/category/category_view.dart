@@ -134,7 +134,7 @@ class CategoryView extends StatelessWidget {
             size: 64.0,
           ),
           title: Text(cm.title),
-          subtitle: Text(cm.timestamp),
+          subtitle: Text('${cm.timestamp}'),
         ),
       ),
     );
