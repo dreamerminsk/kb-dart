@@ -27,13 +27,12 @@ class CategoryView extends StatelessWidget {
 
   Widget _buildBackground(BuildContext context, ColorScheme colorScheme) {
     return Container(
-      height: double.infinity,
-      width: double.infinity,
+      decoration: BoxDecoration(
+        color: colorScheme.primary,
+      ),
       padding: const EdgeInsets.all(8),
-      color: colorScheme.primary,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(height: 8),
           Obx(() => Text(
@@ -50,7 +49,8 @@ class CategoryView extends StatelessWidget {
     );
   }
 
-  Widget _buildForeground(BuildContext context, TextTheme textTheme, ColorScheme colorScheme) {
+  Widget _buildForeground(
+      BuildContext context, TextTheme textTheme, ColorScheme colorScheme) {
     return Positioned(
       top: 150,
       bottom: 0,
@@ -89,11 +89,11 @@ class CategoryView extends StatelessWidget {
       children: <Widget>[
         Text(
           value,
-          style: textTheme.titleLarge!.copyWith(color: colorScheme.onPrimary),
+          style: textTheme.titleLarge?.copyWith(color: colorScheme.onPrimary),
         ),
         Text(
           label,
-          style: textTheme.bodyLarge!.copyWith(color: colorScheme.onPrimary),
+          style: textTheme.bodyLarge?.copyWith(color: colorScheme.onPrimary),
         ),
       ],
     );
