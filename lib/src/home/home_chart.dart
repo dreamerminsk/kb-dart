@@ -5,14 +5,14 @@ import 'package:fl_chart/fl_chart.dart';
 import 'home_controller.dart';
 
 class HomeChart extends StatelessWidget {
-  final RxString event = RxString('');
-  final RxDouble fontSize = RxDouble(11.0);
-  final RxDouble hV = RxDouble(0.0);
-  final RxDouble vV = RxDouble(0.0);
+  final RxString event = ''.obs;
+  final RxDouble fontSize = 11.0.obs;
+  final RxDouble hV = 0.0.obs;
+  final RxDouble vV = 0.0.obs;
   final isChart = true.obs;
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
     final HomeController c = Get.find();
@@ -27,13 +27,8 @@ class HomeChart extends StatelessWidget {
           margin: EdgeInsets.all(12.0),
           padding: EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
-              Radius.circular(24),
-            ),
-            border: Border.all(
-              color: colorScheme.primary,
-              width: 2.0,
-            ),
+            borderRadius: BorderRadius.all(Radius.circular(24)),
+            border: Border.all(color: colorScheme.primary, width: 2.0),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -43,25 +38,27 @@ class HomeChart extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(4.0),
-                  child: isChart.value ? _LineChart() : Text('LineChart'),
-                ), // Padding
+                  child: Obx(
+                    () => isChart.value ? _LineChart() : Text('LineChart'),
+                  ),
+                ),
               ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(4.0),
-                  child: ObxValue(
-                      (data) => Text(
-                            '${data.value}\r\n${fontSize.value},\r\nVh=${hV.value},\r\nVv=${vV.value}',
-                            style: textTheme.headlineSmall!,
-                          ),
-                      event),
-                ), // Padding
+                  child: Obx(
+                    () => Text(
+                      '${event.value}\r\nFont Size: ${fontSize.value},\r\nVh: ${hV.value},\r\nVv: ${vV.value}',
+                      style: textTheme.headlineSmall!.copyWith(fontSize: fontSize.value),
+                    ),
+                  ),
+                ),
               ),
               Expanded(
                 child: GestureDetector(
                   onTap: () {
                     event.value = 'onTap';
-                    fontSize.value = fontSize.value + 1.0;
+                    fontSize.value += 1.0;
                   },
                   onHorizontalDragEnd: (details) {
                     event.value = 'onHorizontalDragEnd';
@@ -71,33 +68,29 @@ class HomeChart extends StatelessWidget {
                     event.value = 'onVerticalDragEnd';
                     vV.value = details.primaryVelocity ?? 0.0;
                     if (vV.value < 0.0) {
-                      fontSize.value = fontSize.value + 1;
-                    }
-                    if (vV.value > 0.0) {
-                      fontSize.value = fontSize.value - 1;
+                      fontSize.value += 1;
+                    } else if (vV.value > 0.0) {
+                      fontSize.value -= 1;
                     }
                   },
                   child: Container(
                     width: Get.width * 0.90,
-                    //height: Get.height * 0.96,
                     padding: EdgeInsets.all(4.0),
                     child: Obx(
-                      () => ObxValue(
-                          (data) => Text(
-                                '${c.summary.value?.extract} ~ ${textTheme.bodyLarge}',
-                                textAlign: TextAlign.justify,
-                                overflow: TextOverflow.fade,
-                                style: textTheme.bodyLarge!,
-                              ),
-                          fontSize),
+                      () => Text(
+                        '${c.summary.value?.extract ?? ''} ~ ${textTheme.bodyLarge}',
+                        textAlign: TextAlign.justify,
+                        overflow: TextOverflow.fade,
+                        style: textTheme.bodyLarge!.copyWith(fontSize: fontSize.value),
+                      ),
                     ),
-                  ), // Padding
-                ), // Expanded
-              ), // GestureDetector
+                  ),
+                ),
+              ),
             ],
-          ), // Column
-        ), // Container
-      ), // SafeArea
+          ),
+        ),
+      ),
     );
   }
 }
