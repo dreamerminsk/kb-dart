@@ -17,7 +17,7 @@ class CategoryView extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            _buildBackground(colorScheme),
+            _buildBackground(context, colorScheme),
             _buildForeground(context, textTheme, colorScheme),
           ],
         ),
@@ -25,7 +25,7 @@ class CategoryView extends StatelessWidget {
     );
   }
 
-  Widget _buildBackground(ColorScheme colorScheme) {
+  Widget _buildBackground(BuildContext context, ColorScheme colorScheme) {
     return Container(
       height: double.infinity,
       width: double.infinity,
