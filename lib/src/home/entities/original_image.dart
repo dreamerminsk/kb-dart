@@ -32,6 +32,10 @@ class OriginalImage {
     );
   }
 
+  static OriginalImage defaultInstance() {
+    return OriginalImage(url: OriginalImage.wikiLogo, width: 0, height: 0);
+  }
+
   (String, int, int) _equality() => (source, width, height);
 
   @override
