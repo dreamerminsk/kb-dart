@@ -49,7 +49,8 @@ class HomeChart extends StatelessWidget {
                   child: Obx(
                     () => Text(
                       '${event.value}\r\nFont Size: ${fontSize.value},\r\nVh: ${hV.value},\r\nVv: ${vV.value}',
-                      style: textTheme.headlineSmall!.copyWith(fontSize: fontSize.value),
+                      style: textTheme.headlineSmall!
+                          .copyWith(fontSize: fontSize.value),
                     ),
                   ),
                 ),
@@ -81,7 +82,8 @@ class HomeChart extends StatelessWidget {
                         '${c.summary.value?.extract ?? ''} ~ ${textTheme.bodyLarge}',
                         textAlign: TextAlign.justify,
                         overflow: TextOverflow.fade,
-                        style: textTheme.bodyLarge!.copyWith(fontSize: fontSize.value),
+                        style: textTheme.bodyLarge!
+                            .copyWith(fontSize: fontSize.value),
                       ),
                     ),
                   ),

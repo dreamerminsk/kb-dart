@@ -42,7 +42,9 @@ class Summary {
       title: json['title'] ?? '',
       description: json['description'] ?? '',
       extract: json['extract'] ?? '',
-      originalImage: OriginalImage.fromJson(json['originalimage'] ?? ''),
+      originalImage: json['originalimage'] != null
+          ? OriginalImage.fromJson(json['originalimage'])
+          : OriginalImage.defaultInstance(),
     );
   }
 
