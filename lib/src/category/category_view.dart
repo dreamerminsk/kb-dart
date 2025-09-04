@@ -76,15 +76,18 @@ class CategoryView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        _buildPropItem(context, textTheme, colorScheme, ci?.subcats.toString() ?? '∞', 'subcats'),
-        _buildPropItem(context, textTheme, colorScheme, ci?.pages.toString() ?? '∞', 'pages'),
+        _buildPropItem(context, textTheme, colorScheme,
+            ci?.subcats.toString() ?? '∞', 'subcats'),
+        _buildPropItem(context, textTheme, colorScheme,
+            ci?.pages.toString() ?? '∞', 'pages'),
         _buildPropItem(context, textTheme, colorScheme, '∞', 'cats'),
         _buildPropItem(context, textTheme, colorScheme, '∞', 'langs'),
       ],
     );
   }
 
-  Widget _buildPropItem(BuildContext context, TextTheme textTheme, ColorScheme colorScheme, String value, String label) {
+  Widget _buildPropItem(BuildContext context, TextTheme textTheme,
+      ColorScheme colorScheme, String value, String label) {
     return Column(
       children: <Widget>[
         Text(
@@ -110,7 +113,8 @@ class CategoryView extends StatelessWidget {
             },
           )
         : Center(
-            child: Icon(Icons.category, color: colorScheme.primary, size: 128.0),
+            child:
+                Icon(Icons.category, color: colorScheme.primary, size: 128.0),
           );
   }
 

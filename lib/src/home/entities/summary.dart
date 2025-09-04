@@ -36,17 +36,17 @@ class Summary {
   }
 
   factory Summary.fromJson(Map<String, dynamic> json) {
-  return Summary(
-    pageid: json['pageid'] ?? 0,
-    lang: json['lang'] ?? 'en',
-    title: json['title'] ?? '',
-    description: json['description'] ?? '',
-    extract: json['extract'] ?? '',
-    originalImage: json['originalimage'] != null
-        ? OriginalImage.fromJson(json['originalimage'])
-        : OriginalImage.defaultInstance(),
-  );
-}
+    return Summary(
+      pageid: json['pageid'] ?? 0,
+      lang: json['lang'] ?? 'en',
+      title: json['title'] ?? '',
+      description: json['description'] ?? '',
+      extract: json['extract'] ?? '',
+      originalImage: json['originalimage'] != null
+          ? OriginalImage.fromJson(json['originalimage'])
+          : OriginalImage.defaultInstance(),
+    );
+  }
 
   (int, String, String) _equality() => (pageid, lang, title);
 
