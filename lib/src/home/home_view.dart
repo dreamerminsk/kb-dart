@@ -83,7 +83,7 @@ class HomeView extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    "<~description~>",
+                    "${item.wiki?.description ?? ''}",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis, // Обрезка текста
                     style: textTheme.bodyMedium,
