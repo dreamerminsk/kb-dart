@@ -17,8 +17,8 @@ samples, guidance on mobile development, and a full API reference.
 
 [![Contribution Stats](https://github-contribution-stats.vercel.app/api/?username=dreamerminsk)](https://github.com/dreamerminsk/github-contribution-stats/)
 
-[![flutter](https://github.com/dreamerminsk/wiki-langs/actions/workflows/update-tables.yml/badge.svg)](https://github.com/dreamerminsk/wiki-langs/actions/workflows/flutter.yml)
-[![releases](https://github.com/dreamerminsk/wiki-langs/actions/workflows/build.yml/badge.svg)](https://github.com/dreamerminsk/wiki-langs/actions/workflows/releases.yml)
+[![flutter](https://github.com/dreamerminsk/kb-dart/actions/workflows/flutter.yml/badge.svg)](https://github.com/dreamerminsk/kb-dart/actions/workflows/flutter.yml)
+[![releases](https://github.com/dreamerminsk/kb-dart/actions/workflows/releases.yml/badge.svg)](https://github.com/dreamerminsk/kb-dart/actions/workflows/releases.yml)
 
 ![commits](https://img.shields.io/github/commit-activity/y/dreamerminsk/kb-dart)
 ![commits](https://img.shields.io/github/commit-activity/m/dreamerminsk/kb-dart)
