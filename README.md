@@ -29,4 +29,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/dreamerminsk/kb-dart/total?style=plastic&label=total%20downloads)
 
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/dreamerminsk/kb-dart/latest/total?sort=semver&style=plastic)
+
+
 
