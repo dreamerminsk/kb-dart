@@ -52,8 +52,8 @@ class HomeController extends GetxController {
       value?.title = animeList[idx].title;
       value?.wiki = animeList[idx].wiki;
     });
-    if (animeList[idx].wiki?.title != null) {
-      final sum = await readSummary(animeList[idx].wiki?.title!);
+    if (animeList[idx].wiki != null && animeList[idx].wiki!.title != null) {
+      final sum = await readSummary(animeList[idx].wiki!.title!);
       summary.value = sum;
     }
   }
@@ -105,8 +105,8 @@ class HomeController extends GetxController {
         String? imgLink = 'https:' + (imgs[0].attributes['src'] ?? '');
         zeroes[0].wiki!.image = imgLink;
       }
-      if (zeroes[0].wiki?.title != null) {
-        final sum = await readSummary(zeroes[0].wiki?.title!);
+      if (zeroes[0].wiki != null &&  zeroes[0].wiki!.title != null) {
+        final sum = await readSummary(zeroes[0].wiki!.title!);
         zeroes[0].wiki!.description = sum.description;
       }
       animeList.sort(
