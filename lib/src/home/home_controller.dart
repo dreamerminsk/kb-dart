@@ -58,7 +58,7 @@ class HomeController extends GetxController {
     }
   }
 
-  void readSummary(String title) async {
+  Future<Result<Summary>> readSummary(String title) async {
     final result = await fetchMap(
         'https://en.wikipedia.org/api/rest_v1/page/summary/${title}');
     return switch (result) {
