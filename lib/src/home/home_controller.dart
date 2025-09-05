@@ -53,8 +53,8 @@ class HomeController extends GetxController {
       value?.wiki = animeList[idx].wiki;
     });
     if (animeList[idx].wiki?.title != null) {
-    final sum = await readSummary(animeList[idx].wiki?.title!);
-    summary.value = sum;
+      final sum = await readSummary(animeList[idx].wiki?.title!);
+      summary.value = sum;
     }
   }
 
@@ -62,14 +62,11 @@ class HomeController extends GetxController {
     final result = await fetchMap(
         'https://en.wikipedia.org/api/rest_v1/page/summary/${title}');
     return switch (result) {
-      ErrorResult e =>
-        Summary(
-            title: animeList[idx].wiki?.title ?? '~~~',
-            description: e.error.toString()),
-      ValueResult v =>
-        Summary.fromJson(v.value),
-      _ =>
-        Summary(
+      ErrorResult e => Summary(
+          title: animeList[idx].wiki?.title ?? '~~~',
+          description: e.error.toString()),
+      ValueResult v => Summary.fromJson(v.value),
+      _ => Summary(
           title: animeList[idx].wiki?.title ?? '~~~',
           description: 'very strange',
         ),
@@ -109,9 +106,9 @@ class HomeController extends GetxController {
         zeroes[0].wiki!.image = imgLink;
       }
       if (zeroes[0].wiki?.title != null) {
-    final sum = await readSummary(zeroes[0].wiki?.title!);
-    zeroes[0].wiki!.description = sum.description;
-    }
+        final sum = await readSummary(zeroes[0].wiki?.title!);
+        zeroes[0].wiki!.description = sum.description;
+      }
       animeList.sort(
           (a, b) => (b.wiki?.mviMonth ?? 0).compareTo(a.wiki?.mviMonth ?? 0));
       animeList.refresh();

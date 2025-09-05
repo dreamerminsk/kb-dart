@@ -5,7 +5,12 @@ class Wiki {
   DateTime? lastUpdate;
   int mviMonth = 0;
 
-  Wiki({this.title, this.image, this.description, this.lastUpdate, this.mviMonth = 0});
+  Wiki(
+      {this.title,
+      this.image,
+      this.description,
+      this.lastUpdate,
+      this.mviMonth = 0});
 
   Wiki.fromJson(Map<String, dynamic> json) {
     title = json['title'];
