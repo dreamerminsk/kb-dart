@@ -108,6 +108,10 @@ class HomeController extends GetxController {
         String? imgLink = 'https:' + (imgs[0].attributes['src'] ?? '');
         zeroes[0].wiki!.image = imgLink;
       }
+      if (zeroes[0].wiki?.title != null) {
+    final sum = await readSummary(zeroes[0].wiki?.title!);
+    zeroes[0].wiki!.description = sum.description;
+    }
       animeList.sort(
           (a, b) => (b.wiki?.mviMonth ?? 0).compareTo(a.wiki?.mviMonth ?? 0));
       animeList.refresh();
