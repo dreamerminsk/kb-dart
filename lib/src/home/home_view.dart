@@ -49,52 +49,50 @@ class HomeView extends StatelessWidget {
 
   Widget _buildCard(BuildContext context, Anime item) {
     final textTheme = Theme.of(context).textTheme;
-    //final colorScheme = Theme.of(context).colorScheme;
 
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
+      elevation: 4, // Добавление тени
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(4),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                _buildImage(context, item),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 4),
-                      Text(
-                        item.title ?? '...',
-                        style: textTheme.headlineSmall!.copyWith(
-                          fontSize: textTheme.headlineSmall!.fontSize! - 1,
-                        ),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        '${item.wiki?.mviMonth ?? 0} - ${DateFormat("HH:mm:ss.SSS").format(item.wiki?.lastUpdate ?? DateTime(2000))}',
-                        style: textTheme.bodyLarge!,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        "<~description~>",
-                        maxLines: 2,
-                        style: textTheme.bodyLarge!,
-                      ),
-                    ],
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _buildImage(context, item),
+            SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    item.title ?? '...',
+                    style: textTheme.headlineSmall?.copyWith(
+                      fontSize: textTheme.headlineSmall!.fontSize! - 1,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 4),
+                  Text(
+                    '${item.wiki?.mviMonth ?? 0} - ${DateFormat("HH:mm:ss.SSS").format(item.wiki?.lastUpdate ?? DateTime(2000))}',
+                    style: textTheme.bodyLarge?.copyWith(
+                      color: Colors.grey[600], // Уменьшение насыщенности
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "${item.wiki?.description ?? ''}",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis, // Обрезка текста
+                    style: textTheme.bodyMedium,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -104,23 +102,29 @@ class HomeView extends StatelessWidget {
         ? CachedNetworkImage(
             imageUrl: (item.wiki?.image ?? '').replaceFirst('220px', '96px'),
             placeholder: (context, url) => CircularProgressIndicator(),
-            errorWidget: (context, url, error) => Icon(Icons.broken_image,
-                color: Theme.of(context).colorScheme.error, size: 96.0),
+            errorWidget: (context, url, error) => Icon(
+              Icons.broken_image,
+              color: Theme.of(context).colorScheme.error,
+              size: 96.0,
+            ),
             imageBuilder: (context, image) => ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Container(
-                width: 96.00,
-                height: 150.00,
-                decoration: new BoxDecoration(
-                  image: new DecorationImage(
+                width: 96.0,
+                height: 150.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
                     image: image,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover, // Изменение fit для лучшего отображения
                   ),
                 ),
               ),
             ),
           )
-        : Icon(Icons.broken_image,
-            color: Theme.of(context).colorScheme.errorContainer, size: 96.0);
+        : Icon(
+            Icons.broken_image,
+            color: Theme.of(context).colorScheme.errorContainer,
+            size: 96.0,
+          );
   }
 }

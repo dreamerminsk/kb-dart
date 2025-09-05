@@ -52,23 +52,25 @@ class HomeController extends GetxController {
       value?.title = animeList[idx].title;
       value?.wiki = animeList[idx].wiki;
     });
-    final result = await fetchMap(
-        'https://en.wikipedia.org/api/rest_v1/page/summary/${animeList[idx].wiki?.title ?? ""}');
-    switch (result) {
-      case ErrorResult e:
-        this.summary.value = Summary(
-            title: animeList[idx].wiki?.title ?? '~~~',
-            description: e.error.toString());
-      case ValueResult v:
-        {
-          this.summary.value = Summary.fromJson(v.value);
-        }
-      default:
-        this.summary.value = Summary(
-          title: animeList[idx].wiki?.title ?? '~~~',
-          description: 'very strange',
-        );
+    if (animeList[idx].wiki != null && animeList[idx].wiki!.title != null) {
+      final sum = await readSummary(animeList[idx].wiki!.title!);
+      summary.value = sum;
     }
+  }
+
+  Future<Summary> readSummary(String title) async {
+    final result = await fetchMap(
+        'https://en.wikipedia.org/api/rest_v1/page/summary/$title');
+    return switch (result) {
+      ErrorResult e => Summary(
+          title: title,
+          description: e.error.toString()),
+      ValueResult v => Summary.fromJson(v.value),
+      _ => Summary(
+          title: title,
+          description: 'very strange',
+        ),
+    };
   }
 
   void copyToClipboard() {
@@ -102,6 +104,10 @@ class HomeController extends GetxController {
       if (imgs.length > 0) {
         String? imgLink = 'https:' + (imgs[0].attributes['src'] ?? '');
         zeroes[0].wiki!.image = imgLink;
+      }
+      if (zeroes[0].wiki != null &&  zeroes[0].wiki!.title != null) {
+        final sum = await readSummary(zeroes[0].wiki!.title!);
+        zeroes[0].wiki!.description = sum.description;
       }
       animeList.sort(
           (a, b) => (b.wiki?.mviMonth ?? 0).compareTo(a.wiki?.mviMonth ?? 0));
