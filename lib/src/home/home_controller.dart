@@ -58,16 +58,16 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<Result<Summary>> readSummary(String title) async {
+  Future<Summary> readSummary(String title) async {
     final result = await fetchMap(
-        'https://en.wikipedia.org/api/rest_v1/page/summary/${title}');
+        'https://en.wikipedia.org/api/rest_v1/page/summary/$title');
     return switch (result) {
       ErrorResult e => Summary(
-          title: animeList[idx].wiki?.title ?? '~~~',
+          title: title,
           description: e.error.toString()),
       ValueResult v => Summary.fromJson(v.value),
       _ => Summary(
-          title: animeList[idx].wiki?.title ?? '~~~',
+          title: title,
           description: 'very strange',
         ),
     };
