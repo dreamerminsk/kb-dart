@@ -52,27 +52,26 @@ class HomeController extends GetxController {
       value?.title = animeList[idx].title;
       value?.wiki = animeList[idx].wiki;
     });
-    await readSummary();
+    final sum = await readSummary();
+    summary.value = sum;
   }
 
   void readSummary() async {
     final result = await fetchMap(
         'https://en.wikipedia.org/api/rest_v1/page/summary/${animeList[idx].wiki?.title ?? ""}');
-    switch (result) {
-      case ErrorResult e:
-        this.summary.value = Summary(
+    return switch (result) {
+      ErrorResult e =>
+        Summary(
             title: animeList[idx].wiki?.title ?? '~~~',
-            description: e.error.toString());
-      case ValueResult v:
-        {
-          this.summary.value = Summary.fromJson(v.value);
-        }
-      default:
-        this.summary.value = Summary(
+            description: e.error.toString()),
+      ValueResult v =>
+        Summary.fromJson(v.value),
+      _ =>
+        Summary(
           title: animeList[idx].wiki?.title ?? '~~~',
           description: 'very strange',
-        );
-    }
+        ),
+    };
   }
 
   void copyToClipboard() {
