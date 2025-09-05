@@ -52,6 +52,10 @@ class HomeController extends GetxController {
       value?.title = animeList[idx].title;
       value?.wiki = animeList[idx].wiki;
     });
+    await readSummary();
+  }
+
+  void readSummary() async {
     final result = await fetchMap(
         'https://en.wikipedia.org/api/rest_v1/page/summary/${animeList[idx].wiki?.title ?? ""}');
     switch (result) {
