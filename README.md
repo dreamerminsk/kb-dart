@@ -16,3 +16,14 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 [![Contribution Stats](https://github-contribution-stats.vercel.app/api/?username=dreamerminsk)](https://github.com/dreamerminsk/github-contribution-stats/)
+
+[![update](https://github.com/dreamerminsk/wiki-langs/actions/workflows/update-tables.yml/badge.svg)](https://github.com/dreamerminsk/wiki-langs/actions/workflows/update-tables.yml)
+[![build](https://github.com/dreamerminsk/wiki-langs/actions/workflows/build.yml/badge.svg)](https://github.com/dreamerminsk/wiki-langs/actions/workflows/build.yml)
+
+![commits](https://img.shields.io/github/commit-activity/y/dreamerminsk/kb-dart)
+![commits](https://img.shields.io/github/commit-activity/m/dreamerminsk/kb-dart)
+![commits](https://img.shields.io/github/commit-activity/w/dreamerminsk/kb-dart)
+
+![](https://img.shields.io/github/languages/code-size/dreamerminsk/kb-dart)
+![](https://img.shields.io/github/repo-size/dreamerminsk/kb-dart)
+
