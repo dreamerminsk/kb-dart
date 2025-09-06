@@ -42,29 +42,24 @@ class SampleColorRed extends StatelessWidget {
                 ),
                 child: Text(
                   'R',
-                  style: Theme.of(context)
-              .textTheme
-              .displayLarge!
-              .copyWith(color: ColorUtils.contrastThemeColor(Colors.red)),
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      color: ColorUtils.contrastThemeColor(Colors.red)),
                 ),
               ),
             ),
             SizedBox(width: 16), // Отступ между элементами
             Container(
-      alignment: Alignment.center,
-      color: Colors.transparent,
-      child: Text(
-        '#${red.toRadixString(16).padLeft(2, '0').toUpperCase()}',
-        style: Theme.of(context)
-            .textTheme
-            .headlineLarge!
-            .copyWith(color: ColorUtils.contrastThemeColor(containerColor)),
-      ),
-    ),
+              alignment: Alignment.center,
+              color: Colors.transparent,
+              child: Text(
+                '#${red.toRadixString(16).padLeft(2, '0').toUpperCase()}',
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    color: ColorUtils.contrastThemeColor(containerColor)),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-

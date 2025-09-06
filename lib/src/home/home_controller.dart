@@ -62,9 +62,7 @@ class HomeController extends GetxController {
     final result = await fetchMap(
         'https://en.wikipedia.org/api/rest_v1/page/summary/$title');
     return switch (result) {
-      ErrorResult e => Summary(
-          title: title,
-          description: e.error.toString()),
+      ErrorResult e => Summary(title: title, description: e.error.toString()),
       ValueResult v => Summary.fromJson(v.value),
       _ => Summary(
           title: title,
@@ -105,7 +103,7 @@ class HomeController extends GetxController {
         String? imgLink = 'https:' + (imgs[0].attributes['src'] ?? '');
         zeroes[0].wiki!.image = imgLink;
       }
-      if (zeroes[0].wiki != null &&  zeroes[0].wiki!.title != null) {
+      if (zeroes[0].wiki != null && zeroes[0].wiki!.title != null) {
         final sum = await readSummary(zeroes[0].wiki!.title!);
         zeroes[0].wiki!.description = sum.extract;
       }

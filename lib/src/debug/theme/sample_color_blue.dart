@@ -42,29 +42,24 @@ class SampleColorBlue extends StatelessWidget {
                 ),
                 child: Text(
                   'B',
-                  style: Theme.of(context)
-              .textTheme
-              .displayLarge!
-              .copyWith(color: ColorUtils.contrastThemeColor(Colors.blue)),
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      color: ColorUtils.contrastThemeColor(Colors.blue)),
                 ),
               ),
             ),
             SizedBox(width: 16), // Отступ между элементами
             Container(
-      alignment: Alignment.center,
-      color: Colors.transparent,
-      child: Text(
-        '#${blue.toRadixString(16).padLeft(2, '0').toUpperCase()}',
-        style: Theme.of(context)
-            .textTheme
-            .headlineLarge!
-            .copyWith(color: ColorUtils.contrastThemeColor(containerColor)),
-      ),
-    ),
+              alignment: Alignment.center,
+              color: Colors.transparent,
+              child: Text(
+                '#${blue.toRadixString(16).padLeft(2, '0').toUpperCase()}',
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    color: ColorUtils.contrastThemeColor(containerColor)),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-

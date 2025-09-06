@@ -19,4 +19,3 @@ class ColorUtils {
     return brightness == Brightness.dark ? Colors.white : Colors.black;
   }
 }
-
