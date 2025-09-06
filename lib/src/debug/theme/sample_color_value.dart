@@ -7,16 +7,15 @@ class SampleColorValue extends StatelessWidget {
   final Color value;
 
   const SampleColorValue({
-    Key? key,
+    super.key,
     required this.value,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    //final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
-    final containerHeight = Get.width / 2 / 1.618;
+final containerHeight = Get.width / 2 / 1.618;
     final containerColor =
         Color.fromARGB(255, value.red, value.green, value.blue);
 
@@ -25,45 +24,34 @@ class SampleColorValue extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: Container(
         width: double.infinity,
-        height: containerHeight,
+        height: Get.width / 2 / 1.618,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: containerColor,
         ),
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(16.0), // Увеличенные отступы
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildRedTextBox(context, colorScheme),
-            _buildAlphaTextBox(context, containerColor),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildRedTextBox(BuildContext context, ColorScheme colorScheme) {
-    return AspectRatio(
-      aspectRatio: 1.0,
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: colorScheme.primary,
-        ),
-        child: Text(
-          'C',
-          style: Theme.of(context)
-              .textTheme
-              .displayLarge!
-              .copyWith(color: colorScheme.onPrimary),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAlphaTextBox(BuildContext context, Color containerColor) {
-    return Container(
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: colorScheme.primary,
+                ),
+                child: Text(
+                  'C',
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(color: colorScheme.onPrimary),
+                ),
+              ),
+            ),
+            SizedBox(width: 16), // Отступ между элементами
+            Container(
       alignment: Alignment.center,
       color: Colors.transparent,
       child: Text(
@@ -72,6 +60,10 @@ class SampleColorValue extends StatelessWidget {
             .textTheme
             .headlineLarge!
             .copyWith(color: ColorUtils.contrastThemeColor(containerColor)),
+      ),
+    ),
+          ],
+        ),
       ),
     );
   }
