@@ -58,7 +58,7 @@ final containerHeight = Get.width / 2 / 1.618;
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    '#${value.toRadixString(16).padLeft(2, '0').toUpperCase()}',
+                    '#${value.value.toRadixString(16).padLeft(2, '0').toUpperCase()}',
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     color: ColorUtils.contrastThemeColor(containerColor)),
                   ),
