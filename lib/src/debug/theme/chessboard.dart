@@ -25,13 +25,13 @@ class ChessboardPainter extends CustomPainter {
     final paintLight = Paint()..color = Colors.white;
     final paintDark = Paint()..color = Colors.grey[300]!;
 
-    for (int i = 0; i < 8; i++) {
-      for (int j = 0; j < 8; j++) {
+    for (int i = 0; i < 16; i++) {
+      for (int j = 0; j < 16; j++) {
         final rect = Rect.fromLTWH(
-          i * (size.width / 8),
-          j * (size.height / 8),
-          size.width / 8,
-          size.height / 8,
+          i * (size.width / 16),
+          j * (size.height / 16),
+          size.width / 16,
+          size.height / 16,
         );
         canvas.drawRect(rect, (i + j) % 2 == 0 ? paintLight : paintDark);
       }
