@@ -26,7 +26,7 @@ class SampleColorAlpha extends StatelessWidget {
             height: Get.width / 2 / 1.618,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: colorScheme.primary.withAlpha(alpha / 2), // Применение прозрачности
+              color: colorScheme.primary.withAlpha(alpha ~/ 2), // Применение прозрачности
             ),
             padding: EdgeInsets.all(16.0),
             child: Row(
