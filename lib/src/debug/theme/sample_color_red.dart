@@ -13,7 +13,7 @@ class SampleColorRed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    //final colorScheme = Theme.of(context).colorScheme;
 
     final containerHeight = Get.width / 2 / 1.618;
     final containerColor = Color.fromARGB(255, red, 0, 0);
