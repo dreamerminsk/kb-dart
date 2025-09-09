@@ -3,17 +3,20 @@ import 'package:flutter/material.dart';
 class ChessboardBackground extends StatelessWidget {
   final double squareSize;
 
-  const ChessboardBackground({super.key, required this.squareSize});
+  const ChessboardBackground({Key? key, required this.squareSize}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-      ),
-      child: CustomPaint(
-        size: Size.square(squareSize),
-        painter: ChessboardPainter(),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: CustomPaint(
+          size: Size.square(squareSize),
+          painter: ChessboardPainter(),
+        ),
       ),
     );
   }
