@@ -25,7 +25,7 @@ final containerHeight = Get.width / 2 / 1.618;
       borderRadius: BorderRadius.circular(20),
       child: Stack(
         children: [
-          ChessboardBackground(squareSize: Get.width / 2 / 1.618),
+          ChessboardBackground(size: Size.new(Get.width-2*16.0, Get.width / 2 / 1.618)),
           Container(
             width: double.infinity,
             height: containerHeight,
