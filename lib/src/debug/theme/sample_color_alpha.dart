@@ -20,13 +20,13 @@ class SampleColorAlpha extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: Stack(
         children: [
-          ChessboardBackground(squareSize: Get.width / 2 / 1.618),
+          ChessboardBackground(size: Size.new(Get.width-2*16.0, Get.width / 2 / 1.618)),
           Container(
             width: double.infinity,
             height: Get.width / 2 / 1.618,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: colorScheme.primary.withAlpha(alpha ~/ 2), // Применение прозрачности
+              color: colorScheme.primary.withAlpha(alpha),
             ),
             padding: EdgeInsets.all(16.0),
             child: Row(
