@@ -10,7 +10,7 @@ class ColorPage extends StatelessWidget {
   final ValueNotifier<Color> colorNotifier;
   final Color color;
 
-  const ColorPage({
+  ColorPage({
     super.key,
     required this.color,
   }) : colorNotifier = ValueNotifier<Color>(color);
@@ -30,8 +30,8 @@ class ColorPage extends StatelessWidget {
               builder: (context, value, child) {
                 return SampleColorAlpha(
                   alpha: value.alpha,
-                  onChanged: (value) {
-                    colorNotifier.value = colorNotifier.value.withAlpha(value);
+                  onChanged: (newValue) {
+                    colorNotifier.value = colorNotifier.value.withAlpha(newValue);
                   },
                 ); // SampleColorAlpha
               },
