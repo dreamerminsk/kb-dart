@@ -6,7 +6,7 @@ import 'chessboard.dart';
 class SampleColorAlpha extends StatelessWidget {
   final int alpha;
 
-  final ValueChanged<Color>? onChanged;
+  final ValueChanged<int>? onChanged;
 
   const SampleColorAlpha({
     super.key,
