@@ -30,7 +30,7 @@ class ColorPage extends StatelessWidget {
           builder: (context, value, child) {
             return SampleColorAlpha(
               alpha: value.alpha,
-            ), // SampleColorAlpha
+            ); // SampleColorAlpha
           },
         ), // ValueListenableBuilder<Color>
           ), // Padding
@@ -42,7 +42,7 @@ class ColorPage extends StatelessWidget {
           builder: (context, value, child) {
             return SampleColorRed(
               red: value.red,
-            ), // SampleColorRed
+            ); // SampleColorRed
           },
         ), // ValueListenableBuilder<Color>
           ), // Padding
@@ -54,7 +54,7 @@ class ColorPage extends StatelessWidget {
           builder: (context, value, child) {
             return SampleColorGreen(
               green: value.green,
-            ), // SampleColorGreen
+            ); // SampleColorGreen
           },
         ), // ValueListenableBuilder<Color>
           ), // Padding
@@ -66,7 +66,7 @@ class ColorPage extends StatelessWidget {
           builder: (context, value, child) {
             return SampleColorBlue(
               blue: value.blue,
-            ), // SampleColorBlue
+            ); // SampleColorBlue
           },
         ), // ValueListenableBuilder<Color>
           ), // Padding
@@ -78,7 +78,7 @@ class ColorPage extends StatelessWidget {
           builder: (context, value, child) {
             return SampleColorValue(
               value: value,
-            ), // SampleColorValue
+            ); // SampleColorValue
           },
         ), // ValueListenableBuilder<Color>
           ), // Padding
