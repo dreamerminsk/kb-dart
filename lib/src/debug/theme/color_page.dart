@@ -25,33 +25,62 @@ class ColorPage extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.all(8),
-            child: SampleColorAlpha(
-              alpha: color.alpha,
+            child:         ValueListenableBuilder<Color>(
+          valueListenable: colorNotifier,
+          builder: (context, value, child) {
+            return SampleColorAlpha(
+              alpha: value.alpha,
             ), // SampleColorAlpha
+          },
+        ), // ValueListenableBuilder<Color>
           ), // Padding
+
           Padding(
             padding: EdgeInsets.all(8),
-            child: SampleColorRed(
-              red: color.red,
+            child:         ValueListenableBuilder<Color>(
+          valueListenable: colorNotifier,
+          builder: (context, value, child) {
+            return SampleColorRed(
+              red: value.red,
             ), // SampleColorRed
+          },
+        ), // ValueListenableBuilder<Color>
           ), // Padding
+
           Padding(
             padding: EdgeInsets.all(8),
-            child: SampleColorGreen(
-              green: color.green,
+            child:         ValueListenableBuilder<Color>(
+          valueListenable: colorNotifier,
+          builder: (context, value, child) {
+            return SampleColorGreen(
+              green: value.green,
             ), // SampleColorGreen
+          },
+        ), // ValueListenableBuilder<Color>
           ), // Padding
+
           Padding(
             padding: EdgeInsets.all(8),
-            child: SampleColorBlue(
-              blue: color.blue,
+            child:         ValueListenableBuilder<Color>(
+          valueListenable: colorNotifier,
+          builder: (context, value, child) {
+            return SampleColorBlue(
+              blue: value.blue,
             ), // SampleColorBlue
+          },
+        ), // ValueListenableBuilder<Color>
           ), // Padding
+
           Padding(
             padding: EdgeInsets.fromLTRB(8, 12, 8, 8),
-            child: SampleColorValue(
-              value: color,
+            child:         ValueListenableBuilder<Color>(
+          valueListenable: colorNotifier,
+          builder: (context, value, child) {
+            return SampleColorValue(
+              value: value,
             ), // SampleColorValue
+          },
+        ), // ValueListenableBuilder<Color>
           ), // Padding
         ],
       ), // ListView
