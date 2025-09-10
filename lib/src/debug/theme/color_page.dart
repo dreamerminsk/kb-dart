@@ -7,6 +7,7 @@ import 'sample_color_blue.dart';
 import 'sample_color_value.dart';
 
 class ColorPage extends StatelessWidget {
+  final ValueNotifier<Color>;
   final Color color;
 
   const ColorPage({
