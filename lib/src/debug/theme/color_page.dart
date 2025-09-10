@@ -30,6 +30,9 @@ class ColorPage extends StatelessWidget {
               builder: (context, value, child) {
                 return SampleColorAlpha(
                   alpha: value.alpha,
+                  onChanged: (value) {
+                    colorNotifier.value = colorNotifier.value.withAlpha(value);
+                  },
                 ); // SampleColorAlpha
               },
             ), // ValueListenableBuilder<Color>
