@@ -6,9 +6,12 @@ import 'chessboard.dart';
 class SampleColorAlpha extends StatelessWidget {
   final int alpha;
 
+  final ValueChanged<Color>? onChanged;
+
   const SampleColorAlpha({
     super.key,
     required this.alpha,
+    this.onChanged,
   });
 
   @override
@@ -21,8 +24,17 @@ class SampleColorAlpha extends StatelessWidget {
       child: Stack(
         children: [
           ChessboardBackground(
-              size: Size.new(Get.width - 2 * 16.0, Get.width / 2 / 1.618)),
-          Container(
+              size: Size.new(Get.width - 2 * 8.0, Get.width / 2 / 1.618)),
+          GestureDetector(
+            onHorizontalDragEnd: (details) {
+                    if (details.primaryVelocity == null) return;
+                    if (details.primaryVelocity!.value < 0.0) {
+                      this.onChanged?.call((this.alpha + 256 - 1) % 256);
+                    } else if (details.primaryVelocity!.value > 0.0) {
+                      this.onChanged?.call((this.alpha + 1) % 256);
+                    }
+                  },
+            child: Container(
             width: double.infinity,
             height: Get.width / 2 / 1.618,
             decoration: BoxDecoration(
@@ -64,6 +76,8 @@ class SampleColorAlpha extends StatelessWidget {
               ],
             ),
           ),
+          ),
+          
         ],
       ),
     );
