@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChessboardBackground extends StatelessWidget {
-  final double size;
+  final Size size;
 
   const ChessboardBackground({
     super.key,
