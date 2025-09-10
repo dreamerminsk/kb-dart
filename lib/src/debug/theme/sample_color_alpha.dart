@@ -28,9 +28,9 @@ class SampleColorAlpha extends StatelessWidget {
           GestureDetector(
             onHorizontalDragEnd: (details) {
               if (details.primaryVelocity == null) return;
-              if (details.primaryVelocity!.value < 0.0) {
+              if (details.primaryVelocity! < 0.0) {
                 this.onChanged?.call((this.alpha + 256 - 1) % 256);
-              } else if (details.primaryVelocity!.value > 0.0) {
+              } else if (details.primaryVelocity! > 0.0) {
                 this.onChanged?.call((this.alpha + 1) % 256);
               }
             },
