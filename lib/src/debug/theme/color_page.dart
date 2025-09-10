@@ -7,13 +7,13 @@ import 'sample_color_blue.dart';
 import 'sample_color_value.dart';
 
 class ColorPage extends StatelessWidget {
-  final ValueNotifier<Color>;
+  final ValueNotifier<Color> colorNotifier;
   final Color color;
 
   const ColorPage({
     super.key,
     required this.color,
-  });
+  }) : colorNotifier = ValueNotifier<Color>(color);
 
   @override
   Widget build(context) {
