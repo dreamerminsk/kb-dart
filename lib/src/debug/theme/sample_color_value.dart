@@ -16,7 +16,7 @@ class SampleColorValue extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-final containerHeight = Get.width / 2 / 1.618;
+    final containerHeight = Get.width / 2 / 1.618;
     final containerColor =
         Color.fromARGB(value.alpha, value.red, value.green, value.blue);
 
@@ -25,7 +25,8 @@ final containerHeight = Get.width / 2 / 1.618;
       borderRadius: BorderRadius.circular(20),
       child: Stack(
         children: [
-          ChessboardBackground(size: Size.new(Get.width-2*16.0, Get.width / 2 / 1.618)),
+          ChessboardBackground(
+              size: Size.new(Get.width - 2 * 16.0, Get.width / 2 / 1.618)),
           Container(
             width: double.infinity,
             height: containerHeight,
@@ -60,7 +61,7 @@ final containerHeight = Get.width / 2 / 1.618;
                   child: Text(
                     '#${value.value.toRadixString(16).padLeft(2, '0').toUpperCase()}',
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: ColorUtils.contrastThemeColor(containerColor)),
+                        color: ColorUtils.contrastThemeColor(containerColor)),
                   ),
                 ),
               ],
@@ -71,4 +72,3 @@ final containerHeight = Get.width / 2 / 1.618;
     );
   }
 }
-
