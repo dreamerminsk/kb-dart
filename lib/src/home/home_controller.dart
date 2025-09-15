@@ -85,7 +85,8 @@ class HomeController extends GetxController {
 
 int fromJson(Map<String, dynamic> value) {
     int views = 0;
-    if (value) {
+    if (value['items'] != null) {
+      final items = value['items'];
     }
 }
 
