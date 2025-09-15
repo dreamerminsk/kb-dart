@@ -86,8 +86,12 @@ class HomeController extends GetxController {
 int fromJson(Map<String, dynamic> value) {
     int views = 0;
     if (value['items'] != null) {
-      final items = value['items'];
+      final items = value['items'] as List<dynamic>;
+      items.forEach((item) {
+    views += item['views'] ?? 0;
+});
     }
+return views;
 }
 
   void copyToClipboard() {
