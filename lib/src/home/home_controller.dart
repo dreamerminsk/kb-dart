@@ -119,6 +119,7 @@ class HomeController extends GetxController {
       if (zeroes[0].wiki != null && zeroes[0].wiki!.title != null) {
         final sum = await readSummary(zeroes[0].wiki!.title!);
         zeroes[0].wiki!.description = sum.extract;
+        zeroes[0].wiki!.image = sum.originalImage.source;
       }
 
       animeList.sort(
