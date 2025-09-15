@@ -83,6 +83,12 @@ class HomeController extends GetxController {
     };
 }
 
+int fromJson(Map<String, dynamic> value) {
+    int views = 0;
+    if (value) {
+    }
+}
+
   void copyToClipboard() {
     final encoder = JsonEncoder.withIndent('   ');
     Clipboard.setData(ClipboardData(text: encoder.convert(animeList)));
