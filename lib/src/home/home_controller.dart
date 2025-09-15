@@ -110,22 +110,6 @@ return views;
         .where((a) => (a.wiki?.title?.length ?? 0) > 0)
         .toList();
     if (zeroes.length > 0) {
-      final piLink =
-          'https://en.wikipedia.org/w/index.php?title=${zeroes[0].wiki?.title}&action=info';
-      final text = await fetchString(piLink);
-      final document = parse(text);
-      final rows = document.querySelectorAll('div.mw-pvi-month');
-      if (rows.length > 0) {
-        int val = int.tryParse(rows[0].text.replaceAll(RegExp(r','), '')) ?? 0;
-        zeroes[0].wiki!.mviMonth = val;
-        zeroes[0].wiki!.lastUpdate = DateTime.now();
-      }
-      final imgs = document
-          .querySelectorAll('tr#mw-pageimages-info-label > td > a > img');
-      if (imgs.length > 0) {
-        String? imgLink = 'https:' + (imgs[0].attributes['src'] ?? '');
-        zeroes[0].wiki!.image = imgLink;
-      }
 
       if (zeroes[0].wiki != null && zeroes[0].wiki!.title != null) {
         final thisYear = await getWikipediaPageViews(zeroes[0].wiki!.title!);
