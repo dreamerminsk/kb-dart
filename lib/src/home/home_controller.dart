@@ -71,6 +71,12 @@ class HomeController extends GetxController {
     };
   }
 
+  Future<Map<String, dynamic>> getWikipediaPageViews(String title) async {
+  final result = await fetchMap(
+        'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/all-agents/$title/daily/20250101/20250914');
+ 
+}
+
   void copyToClipboard() {
     final encoder = JsonEncoder.withIndent('   ');
     Clipboard.setData(ClipboardData(text: encoder.convert(animeList)));
