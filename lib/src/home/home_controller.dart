@@ -72,27 +72,27 @@ class HomeController extends GetxController {
   }
 
   Future<int> getWikipediaPageViews(String title) async {
-   final yesterday= DateTime.now().subtract(const Duration(days: 1));
-   final toDay = DateFormat('yyyyMMdd').format(yesterday);
-  final result = await fetchMap(
+    final yesterday = DateTime.now().subtract(const Duration(days: 1));
+    final toDay = DateFormat('yyyyMMdd').format(yesterday);
+    final result = await fetchMap(
         'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/all-agents/$title/daily/20250101/$toDay');
- return switch (result) {
+    return switch (result) {
       ErrorResult _ => -1,
       ValueResult v => fromJson(v.value),
       _ => 0,
     };
-}
+  }
 
-int fromJson(Map<String, dynamic> value) {
+  int fromJson(Map<String, dynamic> value) {
     int views = 0;
     if (value['items'] != null) {
       final items = value['items'] as List<dynamic>;
       items.forEach((item) {
-    views += item['views'] as int;
-});
+        views += item['views'] as int;
+      });
     }
-return views;
-}
+    return views;
+  }
 
   void copyToClipboard() {
     final encoder = JsonEncoder.withIndent('   ');
@@ -110,7 +110,6 @@ return views;
         .where((a) => (a.wiki?.title?.length ?? 0) > 0)
         .toList();
     if (zeroes.length > 0) {
-
       if (zeroes[0].wiki != null && zeroes[0].wiki!.title != null) {
         final thisYear = await getWikipediaPageViews(zeroes[0].wiki!.title!);
         zeroes[0].wiki!.mviMonth = thisYear;
