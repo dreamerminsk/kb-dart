@@ -88,7 +88,7 @@ int fromJson(Map<String, dynamic> value) {
     if (value['items'] != null) {
       final items = value['items'] as List<dynamic>;
       items.forEach((item) {
-    views += item['views'] ?? 0;
+    views += item['views'] as int ?? 0;
 });
     }
 return views;
