@@ -6,7 +6,7 @@ import 'package:async/async.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:html/parser.dart';
+import 'package:intl/intl.dart';
 import 'package:nanoid2/nanoid2.dart';
 
 import 'entities/anime.dart';
@@ -77,7 +77,7 @@ class HomeController extends GetxController {
   final result = await fetchMap(
         'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/all-agents/$title/daily/20250101/$toDay');
  return switch (result) {
-      ErrorResult e => -1,
+      ErrorResult _ => -1,
       ValueResult v => fromJson(v.value),
       _ => 0,
     };
