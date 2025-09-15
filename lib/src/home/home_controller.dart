@@ -126,10 +126,18 @@ return views;
         String? imgLink = 'https:' + (imgs[0].attributes['src'] ?? '');
         zeroes[0].wiki!.image = imgLink;
       }
+
+      if (zeroes[0].wiki != null && zeroes[0].wiki!.title != null) {
+        final thisYear = await getWikipediaPageViews(zeroes[0].wiki!.title!);
+        zeroes[0].wiki!.mviMonth = thisYear;
+        zeroes[0].wiki!.lastUpdate = DateTime.now();
+      }
+
       if (zeroes[0].wiki != null && zeroes[0].wiki!.title != null) {
         final sum = await readSummary(zeroes[0].wiki!.title!);
         zeroes[0].wiki!.description = sum.extract;
       }
+
       animeList.sort(
           (a, b) => (b.wiki?.mviMonth ?? 0).compareTo(a.wiki?.mviMonth ?? 0));
       animeList.refresh();
